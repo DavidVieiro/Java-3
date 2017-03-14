@@ -30,7 +30,13 @@ public class TiposEnumerados1 {
         }
         
         hoy = Semana.DOMINGO;
-        System.out.println("Hoy " + hoy);
+        System.out.println("Hoy " + hoy + "\n\n");
+        
+        // for each, bucle extendido.
+        for ( Semana days: Semana.values() ) {
+            System.out.println( "Dia " + days.toString() );
+        }
+        
         
     }
     
