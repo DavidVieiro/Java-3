@@ -22,16 +22,22 @@ package cuentabancaria;
 
 import java.util.Objects;
 
+enum Estado { bloqueada, activada, noActivada };
+
 /**
  *
  * @author dam131
  */
+@SuppressWarnings("EqualsAndHashcode")
 public class CuentaBancaria {
     /* atributos de la clase */
-    String titular;
-    long numero_de_cuenta;
-    double tipoDeInteres; 
-    double saldo;
+    @SuppressWarnings("FieldMayBeFinal")
+    private String titular;
+    @SuppressWarnings("FieldMayBeFinal")
+    private long numero_de_cuenta;
+    private double tipoDeInteres; 
+    private double saldo;
+    
     
     /**
      * constructor con 3 parametros
@@ -39,11 +45,12 @@ public class CuentaBancaria {
      * @param titular
      * @param numero_de_cuenta 
      */
-    public CuentaBancaria(double saldo, String titular, long numero_de_cuenta) {
+    public CuentaBancaria( double saldo, String titular, long numero_de_cuenta ) {
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = saldo;
         this.titular = titular;
         this.tipoDeInteres = 0.3;
+        Estado miEstado = Estado.activada;
     }
     
     /**
@@ -51,11 +58,12 @@ public class CuentaBancaria {
      * @param titular
      * @param numero_de_cuenta 
      */
-    public CuentaBancaria(String titular, long numero_de_cuenta) {
+    public CuentaBancaria( String titular, long numero_de_cuenta ) {
         this.titular = titular;
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = 0;
         this.tipoDeInteres = 0.3;
+        Estado miEstado = Estado.activada;
     }
     
     /**
@@ -64,11 +72,12 @@ public class CuentaBancaria {
      * @return  
      */
 
-    public boolean setTipoDeInteres(double tipoDeInteres) {
-        if (tipoDeInteres > 0) {
+    public boolean setTipoDeInteres( double tipoDeInteres ) {
+        if ( tipoDeInteres >= 0 ) {
             this.tipoDeInteres = tipoDeInteres;
             return true;
         } else {
+            System.out.println("ERROR");
             return false;
         }
     }
@@ -78,11 +87,12 @@ public class CuentaBancaria {
      * @param ingreso 
      * @return  
      */
-    public boolean ingresarDinero(double ingreso) {
-        if (ingreso > 0) {
+    public boolean ingresarDinero( double ingreso ) {
+        if ( ingreso >= 0 ) {
             this.saldo += ingreso;
             return true;
         } else {
+            System.out.println("ERROR");
             return false;
         }
     }
@@ -92,11 +102,12 @@ public class CuentaBancaria {
      * @param cantidad 
      * @return  
      */
-    public boolean retirarDinero(double cantidad){
-        if (this.saldo > 0) {
+    public boolean retirarDinero( double cantidad ){
+        if ( this.saldo >= 0 && cantidad >= 0 ) {
             this.saldo -= cantidad;
             return true;
         } else {
+            System.out.println("ERROR");
             return false;
         }
     }
@@ -107,8 +118,11 @@ public class CuentaBancaria {
      */
     @Override
     public String toString() {
-        return "Numero de Cuenta : " + this.numero_de_cuenta + "Titular : " + this.titular + 
-               "Tipo de Interés : " + this.tipoDeInteres + "Saldo : " + this.saldo;
+        return "\n\nNumero de Cuenta : " + this.numero_de_cuenta +
+               "\nTitular : " + this.titular + 
+               "\nTipo de Interés : " + this.tipoDeInteres +
+               "\nSaldo : " + this.saldo + " Euros" +
+               "\nEstado Cuenta: \n" + Estado.class;
     }
 
     /**
@@ -118,24 +132,24 @@ public class CuentaBancaria {
      * @return 
      */
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals( Object obj ) {
+        if ( obj == null ) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if ( getClass() != obj.getClass() ) {
             return false;
         }
-        final CuentaBancaria other = (CuentaBancaria) obj;
-        if (!Objects.equals(this.titular, other.titular)) {
+        final CuentaBancaria other = ( CuentaBancaria ) obj;
+        if ( !Objects.equals( this.titular, other.titular ) ) {
             return false;
         }
-        if (this.numero_de_cuenta != other.numero_de_cuenta) {
+        if ( this.numero_de_cuenta != other.numero_de_cuenta ) {
             return false;
         }
-        if (Double.doubleToLongBits(this.tipoDeInteres) != Double.doubleToLongBits(other.tipoDeInteres)) {
+        if ( Double.doubleToLongBits( this.tipoDeInteres ) != Double.doubleToLongBits( other.tipoDeInteres )) {
             return false;
         }
-        if (Double.doubleToLongBits(this.saldo) != Double.doubleToLongBits(other.saldo)) {
+        if ( Double.doubleToLongBits(this.saldo ) != Double.doubleToLongBits( other.saldo )) {
             return false;
         }
         return true;
