@@ -22,7 +22,20 @@ package cuentabancaria;
 
 import java.util.Objects;
 
-enum Estado { Bloqueada, Activada, NoActivada };
+enum Estado {
+    bloqueada("Bloqueada"), activada("Activada"), noActivada("No activada");
+    
+    private String estado;
+
+    private Estado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+    
+}
 
 /**
  *
@@ -52,7 +65,7 @@ public class CuentaBancaria {
         this.saldo = saldo;
         this.titular = titular;
         this.tipoDeInteres = 0.3;
-        this.miEstado = Estado.Activada;
+        this.miEstado = Estado.activada;
     }
     
     /**
@@ -65,7 +78,7 @@ public class CuentaBancaria {
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = 0;
         this.tipoDeInteres = 0.3;
-        this.miEstado = Estado.Activada;
+        this.miEstado = Estado.activada;
     }
     
     /**
@@ -120,11 +133,13 @@ public class CuentaBancaria {
      */
     @Override
     public String toString() {
-        return "\n\nNumero de Cuenta : " + this.numero_de_cuenta +
+        return "\n------------------------------------" +
+               "\nNumero de Cuenta : " + this.numero_de_cuenta +
                "\nTitular : " + this.titular + 
                "\nTipo de Interés : " + this.tipoDeInteres +
                "\nSaldo : " + this.saldo + " Euros" +
-               "\nEstado Cuenta: " + this.miEstado + "\n";
+               "\nEstado Cuenta: " + this.miEstado.getEstado() +
+               "\n------------------------------------\n";
     }
 
     /**
