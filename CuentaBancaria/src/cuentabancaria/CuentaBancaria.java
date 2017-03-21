@@ -22,7 +22,7 @@ package cuentabancaria;
 
 import java.util.Objects;
 
-enum Estado { bloqueada, activada, noActivada };
+enum Estado { Bloqueada, Activada, NoActivada };
 
 /**
  *
@@ -37,6 +37,8 @@ public class CuentaBancaria {
     private long numero_de_cuenta;
     private double tipoDeInteres; 
     private double saldo;
+    @SuppressWarnings("FieldMayBeFinal")
+    private Estado miEstado;
     
     
     /**
@@ -50,7 +52,7 @@ public class CuentaBancaria {
         this.saldo = saldo;
         this.titular = titular;
         this.tipoDeInteres = 0.3;
-        Estado miEstado = Estado.activada;
+        this.miEstado = Estado.Activada;
     }
     
     /**
@@ -63,7 +65,7 @@ public class CuentaBancaria {
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = 0;
         this.tipoDeInteres = 0.3;
-        Estado miEstado = Estado.activada;
+        this.miEstado = Estado.Activada;
     }
     
     /**
@@ -122,7 +124,7 @@ public class CuentaBancaria {
                "\nTitular : " + this.titular + 
                "\nTipo de Interés : " + this.tipoDeInteres +
                "\nSaldo : " + this.saldo + " Euros" +
-               "\nEstado Cuenta: \n" + Estado.class;
+               "\nEstado Cuenta: " + this.miEstado + "\n";
     }
 
     /**
@@ -139,7 +141,9 @@ public class CuentaBancaria {
         if ( getClass() != obj.getClass() ) {
             return false;
         }
+        
         final CuentaBancaria other = ( CuentaBancaria ) obj;
+        
         if ( !Objects.equals( this.titular, other.titular ) ) {
             return false;
         }
