@@ -4,10 +4,12 @@
  * Metodos: toString(), equals() por umero_de_cuenta.
  * Crear aplicación y probar la implementación de la clase.
  * CuentaBancaria
+ * 
  * String titular;
  * int numero_de_cuenta;
  * tipoDeInteres: double
  * saldo: double
+ * 
  * CuentaBancaria(saldo,titular, int numero_de_cuenta)
  * CuentaBancaria(titular, int numero_de_cuenta)
  * establecerTipoDeInteres(tipoi:double)
@@ -20,7 +22,13 @@
  */
 package cuentabancaria;
 
+import excepciones.CuentaBancariaException;
 import java.util.Objects;
+
+/**
+ *
+ * @author dam131
+ */
 
 enum Estado {
     bloqueada("Bloqueada"), activada("Activada"), noActivada("No activada");
@@ -37,11 +45,6 @@ enum Estado {
     
 }
 
-/**
- *
- * @author dam131
- */
-@SuppressWarnings("EqualsAndHashcode")
 public class CuentaBancaria {
     /* atributos de la clase */
     @SuppressWarnings("FieldMayBeFinal")
@@ -53,14 +56,13 @@ public class CuentaBancaria {
     @SuppressWarnings("FieldMayBeFinal")
     private Estado miEstado;
     
-    
     /**
      * constructor con 3 parametros
      * @param saldo
      * @param titular
      * @param numero_de_cuenta 
      */
-    public CuentaBancaria( double saldo, String titular, long numero_de_cuenta ) {
+    public CuentaBancaria(double saldo, String titular, long numero_de_cuenta) {
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = saldo;
         this.titular = titular;
@@ -73,7 +75,7 @@ public class CuentaBancaria {
      * @param titular
      * @param numero_de_cuenta 
      */
-    public CuentaBancaria( String titular, long numero_de_cuenta ) {
+    public CuentaBancaria(String titular, long numero_de_cuenta) {
         this.titular = titular;
         this.numero_de_cuenta = numero_de_cuenta;
         this.saldo = 0;
@@ -85,15 +87,14 @@ public class CuentaBancaria {
      * Setter tipo de Interes
      * @param tipoDeInteres 
      * @return  
+     * @throws excepciones.CuentaBancariaException  
      */
-
-    public boolean setTipoDeInteres( double tipoDeInteres ) {
+    public boolean setTipoDeInteres( double tipoDeInteres ) throws CuentaBancariaException {
         if ( tipoDeInteres >= 0 ) {
             this.tipoDeInteres = tipoDeInteres;
             return true;
         } else {
-            System.out.println("ERROR");
-            return false;
+            throw new CuentaBancariaException( 1 );
         }
     }
     
@@ -101,14 +102,14 @@ public class CuentaBancaria {
      * Ingresar dinero equivale a aumentar el saldo de la cuenta con un ingreso
      * @param ingreso 
      * @return  
+     * @throws excepciones.CuentaBancariaException  
      */
-    public boolean ingresarDinero( double ingreso ) {
+    public boolean ingresarDinero( double ingreso ) throws CuentaBancariaException {
         if ( ingreso >= 0 ) {
             this.saldo += ingreso;
             return true;
         } else {
-            System.out.println("ERROR");
-            return false;
+            throw new CuentaBancariaException( 2 );
         }
     }
     
@@ -116,15 +117,23 @@ public class CuentaBancaria {
      * verifica que el saldo sea mayor de 0. Le resta la cantidad al saldo.
      * @param cantidad 
      * @return  
+     * @throws excepciones.CuentaBancariaException  
      */
-    public boolean retirarDinero( double cantidad ){
+    public boolean retirarDinero( double cantidad ) throws CuentaBancariaException{
         if ( this.saldo >= 0 && cantidad >= 0 ) {
             this.saldo -= cantidad;
             return true;
         } else {
-            System.out.println("ERROR");
-            return false;
+            throw new CuentaBancariaException( 3 );
         }
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public double getSaldo() {
+        return saldo;
     }
     
     /**
@@ -156,19 +165,17 @@ public class CuentaBancaria {
         if ( getClass() != obj.getClass() ) {
             return false;
         }
-        
         final CuentaBancaria other = ( CuentaBancaria ) obj;
-        
         if ( !Objects.equals( this.titular, other.titular ) ) {
             return false;
         }
         if ( this.numero_de_cuenta != other.numero_de_cuenta ) {
             return false;
         }
-        if ( Double.doubleToLongBits( this.tipoDeInteres ) != Double.doubleToLongBits( other.tipoDeInteres )) {
+        if ( Double.doubleToLongBits( this.tipoDeInteres ) != Double.doubleToLongBits( other.tipoDeInteres ) ) {
             return false;
         }
-        if ( Double.doubleToLongBits(this.saldo ) != Double.doubleToLongBits( other.saldo )) {
+        if ( Double.doubleToLongBits( this.saldo ) != Double.doubleToLongBits( other.saldo ) ) {
             return false;
         }
         return true;
