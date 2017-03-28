@@ -30,6 +30,10 @@ class BiciMontana extends Bici {
     public void indicarModelo() {
         System.out.println("Es una bicicleta de montana");
     }
+//    
+//    public void prueba() {
+//        System.out.println("pruebaaaaaaaaaaaaaaaaaa");
+//    }
 }
 
 class BiciCarreras extends Bici {
@@ -46,13 +50,14 @@ class BiciCarreras extends Bici {
 public class PolimorfismoBicis {
 
     public static void main(String[] args) {
-    //Aqui se declara la referencia de la clase padre
+        //Aqui se declara la referencia de la clase padre
         Bici miBici;
-    //Aqui adoptara la forma de referencia a la clase BiciCarreras
+        //Aqui adoptara la forma de referencia a la clase BiciCarreras
         miBici = new BiciCarreras();
         miBici.indicarModelo();
-    //Aqui adoptara la forma de referencia a la clase BiciMontana
+        //Aqui adoptara la forma de referencia a la clase BiciMontana
         miBici = new BiciMontana();
         miBici.indicarModelo();
+        //miBici.prueba();
     }
 }
