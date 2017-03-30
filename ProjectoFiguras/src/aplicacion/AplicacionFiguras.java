@@ -19,22 +19,20 @@ public class AplicacionFiguras {
      */
     public static void main(String[] args) {
         
-        Triangulo triangulo1 = new Triangulo( 4F, 5F, Colores.Verde );
-        Circulo circulo1 = new Circulo( 5, Colores.Verde );
-        Rectangulo rect1 = new Rectangulo( 5, 4, Colores.Azul );
+        Figura lista[] = new Figura[5];
         
-        System.out.println( circulo1.getClass().getName() );
-        System.out.println( circulo1.toString() );
-        System.out.println("Area: " + circulo1.area() );
-        System.out.println("Perimetro: " + circulo1.perimetro() + "\n");
+        lista[0] = new Triangulo( 4F, 5F, Colores.Verde );
+        lista[1] = new Circulo( 5, Colores.Verde );
+        lista[2] = new Rectangulo( 5, 4, Colores.Azul );
+        lista[3] = new Rectangulo( 7, 4, Colores.Negro );
+        lista[4] = new Circulo( 3, Colores.Azul );
         
-        System.out.println( triangulo1.getClass().getName() );
-        System.out.println("Area: " + triangulo1.area());
-        System.out.println("Perimetro: " + triangulo1.perimetro() + "\n");
-        
-        System.out.println( rect1.getClass().getName() );
-        System.out.println("Area: " + rect1.area() );
-        System.out.println("Perimetro: " + rect1.perimetro() + "\n");
+        for (Figura lista1 : lista) {
+            System.out.println( lista1.getClass().getName() );
+            System.out.println( "Area: " +  lista1.area() );
+            System.out.println( "Perimetro: " + lista1.perimetro() );
+            System.out.println("---------------------------------------");
+        }
         
     }
     
