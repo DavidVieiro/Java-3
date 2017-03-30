@@ -27,13 +27,13 @@ public class AplicacionFiguras {
         lista[3] = new Rectangulo( 7, 4, Colores.Negro );
         lista[4] = new Circulo( 3, Colores.Azul );
         
-        for (Figura lista1 : lista) {
+        for ( Figura lista1 : lista ) {
             System.out.println( lista1.getClass().getName() );
             System.out.println( "Area: " +  lista1.area() );
             System.out.println( "Perimetro: " + lista1.perimetro() );
             System.out.println("---------------------------------------");
         }
-        
+        ( ( Circulo )lista[4] ).area();
     }
     
 }

@@ -34,6 +34,10 @@ public class Circulo extends Figura {
     public String toString() {
         return "Circulo{" + "radio = " + radio + ", color = " + getColor() + '}';
     }
+
+    public float getRadio() {
+        return radio;
+    }
     
     
     
