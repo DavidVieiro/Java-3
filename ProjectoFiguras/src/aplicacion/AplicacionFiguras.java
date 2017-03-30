@@ -5,7 +5,8 @@
  */
 package aplicacion;
 
-import clases.Triangulo;
+import clases.*;
+import clases.Figura.Colores;
 
 /**
  *
@@ -17,9 +18,23 @@ public class AplicacionFiguras {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         
-//        Triangulo triangulo1 = new Triangulo( 4.5, 5.0, Color.Verde);
+        Triangulo triangulo1 = new Triangulo( 4F, 5F, Colores.Verde );
+        Circulo circulo1 = new Circulo( 5, Colores.Verde );
+        Rectangulo rect1 = new Rectangulo( 5, 4, Colores.Azul );
+        
+        System.out.println( circulo1.getClass().getName() );
+        System.out.println( circulo1.toString() );
+        System.out.println("Area: " + circulo1.area() );
+        System.out.println("Perimetro: " + circulo1.perimetro() + "\n");
+        
+        System.out.println( triangulo1.getClass().getName() );
+        System.out.println("Area: " + triangulo1.area());
+        System.out.println("Perimetro: " + triangulo1.perimetro() + "\n");
+        
+        System.out.println( rect1.getClass().getName() );
+        System.out.println("Area: " + rect1.area() );
+        System.out.println("Perimetro: " + rect1.perimetro() + "\n");
         
     }
     

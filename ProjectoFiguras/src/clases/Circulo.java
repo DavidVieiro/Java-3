@@ -13,7 +13,7 @@ public class Circulo extends Figura {
 
     private float radio;
 
-    public Circulo(float radio, Color color) {
+    public Circulo(float radio, Colores color) {
         super(color);
         this.radio = radio;
     }
@@ -32,7 +32,7 @@ public class Circulo extends Figura {
 
     @Override
     public String toString() {
-        return "Circulo{" + "radio = " + radio + "\n color = " + getColor() + '}';
+        return "Circulo{" + "radio = " + radio + ", color = " + getColor() + '}';
     }
     
     

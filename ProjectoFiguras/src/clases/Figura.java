@@ -13,11 +13,11 @@ public abstract class Figura {
     //color   color  => tipo enumerado  (Negro, Verde, Azul);
     //metodos abstractos. Redefinir en subclases
     
-    enum Color { Negro, Verde, Azul };
+    public enum Colores { Negro, Verde, Azul };
     
-    private Color color;
+    private Colores color;
 
-    public Figura( Color color ) {
+    public Figura( Colores color ) {
         this.color = color;
     }
     
@@ -25,7 +25,7 @@ public abstract class Figura {
 
     public abstract double perimetro();
 
-    public Color getColor() {
+    public Colores getColor() {
         return color;
     }
     

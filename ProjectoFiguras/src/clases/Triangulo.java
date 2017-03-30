@@ -13,20 +13,8 @@ public class Triangulo extends Figura {
     
     private float altura;
     private float lado;
-
-//    /**
-//     *
-//     * @param altura
-//     * @param lado
-//     * @param color
-//     */
-//    public Triangulo(float altura, float lado, Color color) {
-//        this.altura = altura;
-//        this.lado = lado;
-//        this.color = color;
-//    }
     
-    public Triangulo(float altura, float lado, Color color) {
+    public Triangulo(float altura, float lado, Colores color) {
         
         super(color);
         this.altura = altura;
@@ -47,7 +35,7 @@ public class Triangulo extends Figura {
 
     @Override
     public String toString() {
-        return "Triangulo{" + "altura = " + altura + "\n lado = " + lado + "\n color = " + getColor() + '}';
+        return "Triangulo{" + "altura = " + altura + ", lado = " + lado + ", color = " + getColor() + '}';
     }
 
 

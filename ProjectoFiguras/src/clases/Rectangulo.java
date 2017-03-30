@@ -14,7 +14,7 @@ public class Rectangulo extends Figura {
     private float base;
     private float altura;
 
-    public Rectangulo(float base, float altura, Color color) {
+    public Rectangulo(float base, float altura, Colores color) {
         super(color);
         this.base = base;
         this.altura = altura;
@@ -34,7 +34,7 @@ public class Rectangulo extends Figura {
 
     @Override
     public String toString() {
-        return "Rectangulo{" + "base = " + base + "\n altura = " + altura + "\n color = " + getColor() + '}';
+        return "Rectangulo{" + "base = " + base + ", altura = " + altura + ", color = " + getColor() + '}';
     }
     
     
