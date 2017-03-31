@@ -5,8 +5,12 @@
  */
 package aplicacion;
 
-import clases.*;
+
+import clases.Circulo;
+import clases.Figura;
 import clases.Figura.Colores;
+import clases.Rectangulo;
+import clases.Triangulo;
 
 /**
  *
