@@ -31,7 +31,7 @@ public class Ventana extends JFrame {
         iniciarComponentes();
     }
 
-    public void iniciarComponentes() {
+    private void iniciarComponentes() {
 
 //        getContentPane().setLayout(new FlowLayout());
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -50,6 +50,7 @@ public class Ventana extends JFrame {
 
         ActionListener a1 = new ActionListener() {
 
+            @Override
             public void actionPerformed(ActionEvent evento) {
 
                 Object obj = evento.getSource();
@@ -63,13 +64,16 @@ public class Ventana extends JFrame {
        // eventos teclado
 
         KeyListener k = new KeyListener() {
+            @Override
             public void keyTyped(KeyEvent e) {
             }
 
+            @Override
             public void keyPressed(KeyEvent e) {
                 lblmensaje.setText("has escrito... ");
             }
 
+            @Override
             public void keyReleased(KeyEvent e) {
             }
         };

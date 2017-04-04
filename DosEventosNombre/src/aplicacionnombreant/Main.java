@@ -19,7 +19,7 @@ public class Main {
 
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             Ventana miVentana = new Ventana();
-            miVentana.show();
+            miVentana.setVisible(true);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 
             System.out.println("No se pudo establecer el aspecto deseado: " + e);
