@@ -49,6 +49,7 @@ public class Ventana1 extends javax.swing.JFrame {
         botonOFF.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         botonOFF.setForeground(new java.awt.Color(0, 0, 0));
         botonOFF.setText("OFF");
+        botonOFF.setEnabled(false);
         botonOFF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonOFFActionPerformed(evt);
@@ -95,19 +96,23 @@ public class Ventana1 extends javax.swing.JFrame {
     
     private void botonONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonONActionPerformed
         ++numeroClicks;
+        botonOFF.setEnabled(true);
         botonOFF.setBackground(Color.GREEN);
         botonOFF.setText("ON");
         botonON.setBackground(Color.RED);
         botonON.setText("OFF");
+        botonON.setEnabled(false);
         etiquetaClicks.setText( "Numero clicks: " + numeroClicks );
     }//GEN-LAST:event_botonONActionPerformed
 
     private void botonOFFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOFFActionPerformed
         ++numeroClicks;
+        botonOFF.setEnabled(false);
         botonOFF.setBackground(Color.RED);
         botonOFF.setText("OFF");
         botonON.setBackground(Color.GREEN);
         botonON.setText("ON");
+        botonON.setEnabled(true);
         etiquetaClicks.setText( "Numero clicks: " + numeroClicks );
     }//GEN-LAST:event_botonOFFActionPerformed
 
