@@ -5,29 +5,68 @@
  */
 package funciones;
 
+import excepciones.CalculosException;
+import java.util.Random;
+
 /**
  *
  * @author dam132
  */
 public class Calculos {
     
-    private final int LIMITE_RANDOM = 50;
-    private final int MAXIMO_NUM = 15;
+    private static final int LIMITE_RANDOM = 50;
+    private static final int MAXIMO_NUM = 15;
     
-    public void generarNumero() {
+    public static int[] generarNumero( int longVector) throws CalculosException {
         
+        int vector[] = new int[longVector];
         
+        Random aleatorio = new Random();
         
-        
-        
+        if ( vector != null ) {
+            
+            int n = 0;
+            
+            if ( vector.length <= MAXIMO_NUM && vector.length > 0 ) {
+                
+                for ( int i = 0; i < vector.length; i++ ) {
+                    
+                    boolean existe = true;
+                    
+                    do {
+                        
+                        n = aleatorio.nextInt( LIMITE_RANDOM ); /* Siguiente valor aleatorio */
+                        existe = comprobarExiste( vector, n );
+                        vector[i] = n;
+                        
+                    } while ( existe );
+                    
+                }
+                
+            }
+            else {
+                throw new CalculosException( 1 );
+            }
+            
+        }
+        else {
+            throw new NumberFormatException( "\nERROR: Introduce numeros en el campo de texto" );
+        }
+        return vector;
     }
     
-    private void comprobarExiste() {
+    private static boolean comprobarExiste( int vector[], int numero ) {
         
+        int i = 0;
+        boolean existe = false;
         
+        for (i = 0; i < vector.length && existe == false; i++) {
+            if (vector[i] == numero) {
+                existe = true;
+            }
+        }
         
+        return existe;
     }
-    
-    
     
 }

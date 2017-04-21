@@ -1,10 +1,17 @@
 package paquete;
 
+import excepciones.CalculosException;
+import funciones.Calculos;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 
 /**
  *
@@ -77,8 +84,18 @@ public class Ventanas1 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(campoTexto);
 
         botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         botonBorrar.setText("Borrar");
+        botonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCuerpoLayout = new javax.swing.GroupLayout(panelCuerpo);
         panelCuerpo.setLayout(panelCuerpoLayout);
@@ -153,12 +170,43 @@ public class Ventanas1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+            int longValor = Integer.decode( campoCuantos.getText() );
+            campoTexto.setText( Arrays.toString( Calculos.generarNumero(longValor ) ) );
+            
+        } catch ( NumberFormatException | CalculosException ex1 ) {
+            
+            campoTexto.setText( ex1.getMessage() );
+            
+        }
     }//GEN-LAST:event_botonCalcularActionPerformed
 
     private void campoCuantosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCuantosActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+            int longValor = Integer.decode( campoCuantos.getText() );
+            campoTexto.setText( Arrays.toString( Calculos.generarNumero( longValor ) ) );
+            
+        } catch ( NumberFormatException | CalculosException ex1 ) {
+            
+            campoTexto.setText( ex1.getMessage() );
+            
+        }
     }//GEN-LAST:event_campoCuantosActionPerformed
+
+    private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
+        
+        campoCuantos.setText("");
+        campoTexto.setText("");
+        
+    }//GEN-LAST:event_botonBorrarActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
