@@ -20,7 +20,7 @@ public class CalculosException extends Exception {
     @Override
     public String getMessage() {
         switch ( opcion ) {
-            case 1: return "\nERROR: La longitud del vector no esta dentro\nde los parametros...";
+            case 1: return "\nERROR: La longitud del vector no esta dentro de los\nparametros...";
             default: return "";
         }
     }

@@ -3,8 +3,6 @@ package paquete;
 import excepciones.CalculosException;
 import funciones.Calculos;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -171,27 +169,23 @@ public class Ventanas1 extends javax.swing.JFrame {
 
     private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
         try {
-            
             int longValor = Integer.decode( campoCuantos.getText() );
             campoTexto.setText( Arrays.toString( Calculos.generarNumero(longValor ) ) );
-            
-        } catch ( NumberFormatException | CalculosException ex1 ) {
-            
+        } catch ( CalculosException ex1 ) {
             campoTexto.setText( ex1.getMessage() );
-            
+        } catch ( NumberFormatException ex2 ) {
+            campoTexto.setText( "\nERROR: Introduce numeros en el campo de texto" );
         }
     }//GEN-LAST:event_botonCalcularActionPerformed
 
     private void campoCuantosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCuantosActionPerformed
         try {
-            
             int longValor = Integer.decode( campoCuantos.getText() );
             campoTexto.setText( Arrays.toString( Calculos.generarNumero( longValor ) ) );
-            
-        } catch ( NumberFormatException | CalculosException ex1 ) {
-            
+        } catch ( CalculosException ex1 ) {
             campoTexto.setText( ex1.getMessage() );
-            
+        } catch ( NumberFormatException ex2 ) {
+            campoTexto.setText( "\nERROR: Introduce numeros en el campo de texto" );
         }
     }//GEN-LAST:event_campoCuantosActionPerformed
 
@@ -203,9 +197,7 @@ public class Ventanas1 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        
         this.dispose();
-        
     }//GEN-LAST:event_botonSalirActionPerformed
 
     /**

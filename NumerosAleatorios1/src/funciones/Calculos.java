@@ -49,9 +49,6 @@ public class Calculos {
             }
             
         }
-        else {
-            throw new NumberFormatException( "\nERROR: Introduce numeros en el campo de texto" );
-        }
         return vector;
     }
     
