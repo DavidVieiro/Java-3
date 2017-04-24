@@ -168,14 +168,9 @@ public class Ventanas1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
-        try {
-            int longValor = Integer.decode( campoCuantos.getText() );
-            campoTexto.setText( Arrays.toString( Calculos.generarNumero(longValor ) ) );
-        } catch ( CalculosException ex1 ) {
-            campoTexto.setText( ex1.getMessage() );
-        } catch ( NumberFormatException ex2 ) {
-            campoTexto.setText( "\nERROR: Introduce numeros en el campo de texto" );
-        }
+        // Hacemos una llamada al otro evento para no repetir dos veces codigo.
+        // De esta forma si hacen INTRO en el campo de texto o le dan al boton se ejecuta el codigo.
+        campoCuantosActionPerformed( evt );
     }//GEN-LAST:event_botonCalcularActionPerformed
 
     private void campoCuantosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCuantosActionPerformed
@@ -190,13 +185,13 @@ public class Ventanas1 extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCuantosActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
-        
         campoCuantos.setText("");
         campoTexto.setText("");
-        
+        campoCuantos.requestFocus( true );
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // Boton para salir del programa.
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
