@@ -83,16 +83,6 @@ public class Ventana extends javax.swing.JFrame {
             default:
         }
         
-        switch ( opcionHM ) {
-            case JOptionPane.NO_OPTION:
-            case JOptionPane.YES_OPTION:
-                opcionFinal = JOptionPane.showInputDialog(this, "Introduce tu nombre:", "Paso 3", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            case JOptionPane.CLOSED_OPTION:
-                break;
-            default:
-        }
-        
         if ( opcionHM == 0 ) {
             hm = "o";
         }
@@ -100,12 +90,28 @@ public class Ventana extends javax.swing.JFrame {
             hm = "a";
         }
         
-        if ( !"".equals( opcionFinal ) ) {
-            JOptionPane.showMessageDialog(this, "Bienvenid" + hm + " " + opcionFinal, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        switch ( opcionHM ) {
+            case JOptionPane.NO_OPTION:
+            case JOptionPane.YES_OPTION:
+                do {
+                    opcionFinal = JOptionPane.showInputDialog(this, "Introduce tu nombre:",
+                            "Paso 3", JOptionPane.INFORMATION_MESSAGE);
+                    if ( !"".equals( opcionFinal ) ) {
+                        JOptionPane.showMessageDialog(this, "Bienvenid" + hm + " " + opcionFinal,
+                                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else if ( "".equals( opcionFinal ) ) {
+                        JOptionPane.showMessageDialog(this, "No has introducido ningun valor...",
+                                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } while ( "".equals( opcionFinal ) );
+                
+                break;
+            case JOptionPane.CLOSED_OPTION:
+                break;
+            default:
         }
-        else if ( "".equals( opcionFinal ) ) {
-            JOptionPane.showMessageDialog(this, "No has introducido ningun valor...", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-        }
+        
     }//GEN-LAST:event_botonIniciarActionPerformed
 
     /**
