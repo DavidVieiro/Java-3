@@ -67,7 +67,7 @@ public class Ventana extends javax.swing.JFrame {
         
         int opcionInicial = JOptionPane.showConfirmDialog(this, "Has empezado deseas continuar?",
                 "Paso 1", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        int opcionHM = 0;
+        int opcionHM = 3;
         String opcionFinal = "";
         String hm = "";
         
@@ -77,9 +77,9 @@ public class Ventana extends javax.swing.JFrame {
                 "Paso 2", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, hombreMujer, hombreMujer[0]);
                 break;
             case JOptionPane.NO_OPTION:
-                this.dispose();
-            case JOptionPane.CLOSED_OPTION:
                 break;
+            case JOptionPane.CLOSED_OPTION:
+                this.dispose();
             default:
         }
         
@@ -90,26 +90,29 @@ public class Ventana extends javax.swing.JFrame {
             hm = "a";
         }
         
-        switch ( opcionHM ) {
-            case JOptionPane.NO_OPTION:
-            case JOptionPane.YES_OPTION:
-                do {
-                    opcionFinal = JOptionPane.showInputDialog(this, "Introduce tu nombre:",
-                            "Paso 3", JOptionPane.INFORMATION_MESSAGE);
-                    if ( !"".equals( opcionFinal ) ) {
-                        JOptionPane.showMessageDialog(this, "Bienvenid" + hm + " " + opcionFinal,
-                                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else if ( "".equals( opcionFinal ) ) {
-                        JOptionPane.showMessageDialog(this, "No has introducido ningun valor...",
-                                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                } while ( "".equals( opcionFinal ) );
-                
-                break;
-            case JOptionPane.CLOSED_OPTION:
-                break;
-            default:
+        if ( opcionHM != 3 ) {
+            
+            switch ( opcionHM ) {
+                case JOptionPane.NO_OPTION:
+                case JOptionPane.YES_OPTION:
+                    do {
+                        opcionFinal = JOptionPane.showInputDialog(this, "Introduce tu nombre:",
+                                "Paso 3", JOptionPane.INFORMATION_MESSAGE);
+                        if ( !"".equals( opcionFinal ) && opcionFinal != null ) {
+                            JOptionPane.showMessageDialog(this, "Bienvenid" + hm + " " + opcionFinal,
+                                    "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else if ( "".equals( opcionFinal ) || opcionFinal == null ) {
+                            JOptionPane.showMessageDialog(this, "No has introducido ningun valor...",
+                                    "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } while ( "".equals( opcionFinal ) || opcionFinal == null );
+                    break;
+                case JOptionPane.CLOSED_OPTION:
+                    this.dispose();
+                default:
+            }
+            
         }
         
     }//GEN-LAST:event_botonIniciarActionPerformed
