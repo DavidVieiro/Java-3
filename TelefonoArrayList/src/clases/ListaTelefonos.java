@@ -46,18 +46,18 @@ public class ListaTelefonos {
     
     public String buscarNombre( String nombre ) {
         
-        String cadena = "No se ha encontrado el nombre...";
+        String cadena = "No se ha encontrado el nombre ( " + nombre + " )";
         
-        ListIterator<Persona> iterList = agenda.listIterator();
+        ListIterator<Persona> iterador = agenda.listIterator();
         Persona temp;
         
         if ( agenda.isEmpty() ) {
             cadena = "La agenda esta vacia...";
         }
         else {
-            while ( iterList.hasNext() ) {
+            while ( iterador.hasNext() ) {
                 
-                temp = iterList.next();
+                temp = iterador.next();
                 if ( nombre.equalsIgnoreCase( temp.getNombre() )) {
                     cadena = temp.toString();
                 }
