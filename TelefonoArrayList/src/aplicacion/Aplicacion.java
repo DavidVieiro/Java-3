@@ -36,6 +36,21 @@ public class Aplicacion {
         
         System.out.println("\nBuscando datos:");
         System.out.println( agenda.buscarNombre( "Juan" ) );
+        
+        System.out.println("\nBuscar indice:");
+        System.out.println( agenda.buscarIndice( 3 ));
+        
+        System.out.println("\nComprobar existe:");
+        System.out.println("Existe Jorge? " + agenda.comprobarExiste( per1 ));
+//        System.out.println("Existe Jose? " + agenda.comprobarExiste( per7 ));
+        System.out.println("Existe Ana? " + agenda.comprobarExiste( per4 ));
+        System.out.println("Existe Pepe? " + agenda.comprobarExiste( per2 ));
+//        System.out.println("Existe David? " + agenda.comprobarExiste( per6 ));
+        
+        System.out.println("\nModificar telefono:");
+        agenda.modTelefono( per4, "981004400" );
+        agenda.listar();
+        
     }
     
 }

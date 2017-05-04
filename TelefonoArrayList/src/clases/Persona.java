@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class Persona {
     
+    @SuppressWarnings("FieldMayBeFinal")
     private String nombre;
     private String dni;
     private String direccion;
@@ -82,6 +83,5 @@ public class Persona {
         }
         return true;
     }
-    
     
 }

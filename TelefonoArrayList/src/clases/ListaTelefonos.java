@@ -14,8 +14,10 @@ import java.util.ListIterator;
  */
 public class ListaTelefonos {
     
+    @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<Persona> agenda;
 
+    @SuppressWarnings("Convert2Diamond")
     public ListaTelefonos() {
         agenda = new ArrayList<Persona>();
     }
@@ -43,7 +45,6 @@ public class ListaTelefonos {
         
     }
     
-    
     public String buscarNombre( String nombre ) {
         
         String cadena = "No se ha encontrado el nombre ( " + nombre + " )";
@@ -56,18 +57,93 @@ public class ListaTelefonos {
         }
         else {
             while ( iterador.hasNext() ) {
-                
                 temp = iterador.next();
                 if ( nombre.equalsIgnoreCase( temp.getNombre() )) {
                     cadena = temp.toString();
                 }
-                
             }
         }
         
         return cadena;
     }
     
+    public String buscarIndice ( int index ) {
+        
+        String cadena;
+        
+        if ( agenda.isEmpty() ) {
+            cadena = "La agenda esta vacia.";
+        }
+        else if ( index >= 0 && index < agenda.size() ) {
+            cadena =  agenda.get( index ).toString();
+        } else {
+            cadena = "EL indice no es valido.";
+        }
+        
+        return cadena;
+    }
     
+    public boolean comprobarExiste( Persona persona ) {
+        
+        ListIterator<Persona> iterador = agenda.listIterator();
+        Persona temp;
+        
+        if ( agenda.isEmpty() ) {
+            return false;
+        }
+        else {
+            while ( iterador.hasNext() ) {
+                temp = iterador.next();
+                if ( temp.getNombre().equalsIgnoreCase( persona.getNombre() )) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    
+    public void addPersona( Persona persona ) {
+        
+        if ( !comprobarExiste( persona ) ) {
+            agenda.add( persona );
+        }
+        else {
+            System.out.println("No se puede añadir, ya existe.");
+        }
+        
+    }
+    
+    public boolean deletePersona( Persona persona ) {
+        
+        boolean correcto = false;
+        
+        ListIterator<Persona> iterList = agenda.listIterator();
+        Persona temp;
+        
+        while ( iterList.hasNext() && !correcto ) {
+            temp =  iterList.next();
+            if ( temp.getNombre().equalsIgnoreCase( persona.getNombre() ) ) {
+                agenda.remove( agenda.indexOf( temp ) );
+                correcto = true;
+            }
+        }
+        
+        return correcto;
+    }
+    
+    public void modTelefono( Persona persona, String telefono ) {
+        
+        //int i;
+        
+        if ( comprobarExiste( persona ) ) {
+            persona.setTelefono( telefono );
+        }
+        else {
+            System.out.println("La persona que estas buscando no existe.");
+        }
+        
+    }
     
 }
