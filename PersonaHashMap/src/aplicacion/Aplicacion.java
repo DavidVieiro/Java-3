@@ -53,7 +53,22 @@ public class Aplicacion {
         lista.borrarClave( "12345678A" );
         lista.listaPeronas1();
         
+        System.out.println("\n\nLista de claves:");
+        Object claves[] = lista.listaClaves();
+        for (Object clave : claves) {
+            System.out.println("Clave: " + clave.toString() );
+        }
         
+        System.out.println("\n\nLista de claves y valor:");
+        lista.mostrarClaveValor();
+        
+        System.out.println("\n\nModificar:");
+        lista.pruebaModificar("12345678D", "Ana", "Calle otra", "981000033");
+        lista.listaPeronas1();
+        
+        System.out.println("\n\nBorrar lista:");
+        lista.borrarLista();
+        lista.listaPeronas1();
         
     }
 

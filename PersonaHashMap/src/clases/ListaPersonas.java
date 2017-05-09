@@ -7,6 +7,7 @@ package clases;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *
@@ -53,12 +54,6 @@ public class ListaPersonas {
         return dato;
     }
     
-    public void añadirPersona( Persona p ) {
-        
-        
-        
-    }
-    
     public void borrarClave( String clave ) {
         
         Persona dato = obtener( clave );
@@ -72,5 +67,29 @@ public class ListaPersonas {
         }
     }
     
+    public void borrarLista() {
+        
+        lista.clear();
+        System.out.println("La lista se ha borrado correctamente.");
+        
+    }
+    
+    
+    public Object[] listaClaves() {
+        
+        Set conjunto = lista.keySet();
+        
+        return conjunto.toArray();
+    }
+    
+    public void mostrarClaveValor() {
+        System.out.println( lista.entrySet().toString() );
+    }
+    
+    public void pruebaModificar( String dni, String nombre, String calle, String telefono ) {
+        lista.remove( dni );
+        Persona p = new Persona( nombre, dni, calle, telefono);
+        lista.put( dni, p );
+    }
     
 }
