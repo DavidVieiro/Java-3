@@ -48,12 +48,29 @@ public class ListaPersonas {
         
         if ( lista.containsKey( clave ) ) {
             dato = (Persona) lista.get( clave );
-            System.out.println( dato.toString() );
-        }
-        else {
-            System.out.println("No se encuentra lo que buscas...");
         }
         
         return dato;
     }
+    
+    public void añadirPersona( Persona p ) {
+        
+        
+        
+    }
+    
+    public void borrarClave( String clave ) {
+        
+        Persona dato = obtener( clave );
+        
+        if ( dato != null ) {
+            lista.remove( clave );
+            System.out.println("Se ha borrado el campo con la clave " + clave);
+        }
+        else {
+            System.out.println("El campo que buscas no existe...");
+        }
+    }
+    
+    
 }

@@ -47,7 +47,14 @@ public class Aplicacion {
         lista.listaPeronas1();
         
         System.out.println("\n\nBuscar a Jorge por DNI:");
-        lista.obtener( "12345678A" );
+        System.out.println( lista.obtener( "12345678A" ) );
+        
+        System.out.println("\n\nBorrar dato:");
+        lista.borrarClave( "12345678A" );
+        lista.listaPeronas1();
+        
+        
+        
     }
 
 }
