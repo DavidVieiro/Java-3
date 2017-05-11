@@ -7,7 +7,9 @@ package clases;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  *
@@ -74,7 +76,6 @@ public class ListaPersonas {
         
     }
     
-    
     public Object[] listaClaves() {
         
         Set conjunto = lista.keySet();
@@ -91,5 +92,21 @@ public class ListaPersonas {
         Persona p = new Persona( nombre, dni, calle, telefono);
         lista.put( dni, p );
     }
+    
+    public void listarOtraForma() {
+        
+        TreeMap orden = new TreeMap(lista);
+        
+        Collection valores = orden.values();
+        
+        Iterator it = valores.iterator();
+        
+        while ( it.hasNext() ) {
+            Persona objeto = (Persona)it.next();
+            System.out.println( objeto.toString() );
+        }
+        
+    }
+    
     
 }

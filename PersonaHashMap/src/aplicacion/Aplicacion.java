@@ -46,29 +46,34 @@ public class Aplicacion {
         
         lista.listaPeronas1();
         
-        System.out.println("\n\nBuscar a Jorge por DNI:");
+        System.out.println("\nBuscar a Jorge por DNI:");
         System.out.println( lista.obtener( "12345678A" ) );
         
-        System.out.println("\n\nBorrar dato:");
+        System.out.println("\nBorrar dato:");
         lista.borrarClave( "12345678A" );
         lista.listaPeronas1();
         
-        System.out.println("\n\nLista de claves:");
+        System.out.println("\nLista de claves:");
         Object claves[] = lista.listaClaves();
         for (Object clave : claves) {
             System.out.println("Clave: " + clave.toString() );
         }
         
-        System.out.println("\n\nLista de claves y valor:");
+        System.out.println("\nLista de claves y valor:");
         lista.mostrarClaveValor();
         
-        System.out.println("\n\nModificar:");
+        System.out.println("\nModificar:");
         lista.pruebaModificar("12345678D", "Ana", "Calle otra", "981000033");
         lista.listaPeronas1();
         
-        System.out.println("\n\nBorrar lista:");
-        lista.borrarLista();
-        lista.listaPeronas1();
+        System.out.println("\nListar otra forma:");
+        lista.listarOtraForma();
+        
+        System.out.println("\nBorrar lista: (COMENTADO)");
+//        lista.borrarLista();
+//        lista.listaPeronas1();
+        
+        
         
     }
 
